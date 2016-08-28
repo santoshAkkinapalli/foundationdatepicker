@@ -1,0 +1,102 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foundation for Sites</title>
+    <link rel="stylesheet" href="css/foundation.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/foundation-datepicker.css">
+    <link rel="stylesheet" href="css/foundation-datepicker.min.css">
+    <link rel="stylesheet" href="css/custom.css">
+  </head>
+  <body>
+    <section class="head callout">
+    <div class="row ">
+      <div class="large-12 columns">
+        <h5>Foundation Date Picker Example</h5>
+      </div>
+    </div>
+    </section>
+    <section class="main">
+    <form>
+        <div class="row" id="row1">
+            <div class="small-3 columns">
+              <label for="middle-label" class="text-right middle"><span class="date-lable">Select date :</span></label>
+            </div>
+            <div class="small-7 columns">
+              <input type="text" id="dp1" placeholder="Right- and middle-aligned text input" class="span2" >
+            </div>
+        </div>
+        
+    </form>
+    <form>
+        <div class="row">
+            <div class="small-3 columns">
+              <label for="middle-label" class="text-right middle"><span class="date-lable">Selected date in (mm/dd/yyyy) format :</span></label>
+            </div>
+            <div class="small-7 columns">
+              <input type="text" id="text1">
+            </div>
+        </div>
+    </form>
+    <form>
+        <div class="row">
+            <div class="small-3 columns">
+              <label for="middle-label" class="text-right middle"><span class="date-lable">Selected date in (dd/mm/yyyy) format :</span></label>
+            </div>
+            <div class="small-7 columns">
+              <input type="text" id="text2">
+            </div>
+        </div>
+    </form>
+    <form>
+        <div class="row">
+            <div class="small-3 columns">
+              <label for="middle-label" class="text-right middle"><span class="date-lable">Selected date in (yyyy/mm/dd) format :</span></label>
+            </div>
+            <div class="small-7 columns">
+              <input type="text" id="text3">
+            </div>
+        </div>
+    </form>
+    </section>
+    
+
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/vendor/what-input.js"></script>
+    <script src="js/vendor/foundation.js"></script>
+    <script src="js/foundation-datepicker.js"></script>
+    <script src="js/foundation-datepicker.min.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        $(function(){
+	    $('#dp1').fdatepicker({
+		initialDate: '02-12-1989',
+		format: 'mm-dd-yyyy',
+		disableDblClickSelection: true
+	});
+});
+</script>
+ <script>
+        $(function(){
+        $('#dp1').fdatepicker()
+		.on('changeDate', function (ev){
+            var newDate = new Date(ev.date);
+            var d=newDate.getDate();
+            var m=(newDate.getMonth()+1);
+            var y=newDate.getFullYear();
+            var text1=m+'/'+d+'/'+y;
+            $('#text1').val(text1);
+            var text1=d+'/'+m+'/'+y;
+            $('#text2').val(text1);
+            var text1=y+'/'+m+'/'+d;
+            $('#text3').val(text1);
+  	        $('#row1').hide();
+        });
+    
+        });
+     </script>
+  </body>
+</html>
